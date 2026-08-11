@@ -1,0 +1,217 @@
+
+Function Again : Reply;
+Var
+  Ch : Char;
+  Foo : INTEGER;
+Begin
+  Again := Continue;
+  Foo := 1280;
+  Print_At(Foo);
+  write(tty,'--MORE--');
+  Repeat
+    Ch := Comand;
+    IF (Ch = '?') THEN
+      BEGIN
+	Print_At(Foo + 12);
+	WRITE(TTY,'<Space> to continue, <del> to quit, "H" for help');
+	Print_At(Foo + 8);
+	Ch := CHR(0)
+      END
+  Until (Ch >= Space);
+  If Ch in ['N','Q',Chr(177B),Chr(8)] Then
+    Again := Enough
+  Else If (Ch = 'H') Then
+    Again := Help
+End;
+
+Procedure Notes;
+Begin
+  Vcls;
+  Vdca(Scr_x_min,18);
+  Vsout('>> Some TIAR Notes <<');
+  Vnl
+End;
+
+Procedure Victim;
+Var
+  Ready : Reply;
+Begin
+  CLS;
+  Print_At(20);
+  Vsout('>> TIAR <<');
+  writeln(tty);
+  Vsout('Aha, we have ourselves a victim, er, challenger.');
+  writeln(tty);
+  Vsout('This game is a strategic game. The rules, scoring system and');
+  Vsout('penalty system are consistent, however, the game will be');
+  Vsout('different each time it is played.');
+  writeln(tty);
+  Vsout('I hope that you are able to complete your challenge without');
+  Vsout('further assistance and I wish you good luck at your task.');
+  Vsout('   -- Scott L. Richmond, Creator of TIAR');
+  writeln(tty);
+  Vsout('Addendum:  This version was implemented from the original TRS-80');
+  Vsout('Microsoft Basic version by John M. Relph.');
+  Ready := Again
+End;
+
+
+Procedure Notes_Intro;
+Var
+  Ready : Reply;
+  Answer : Char;
+Begin
+  Notes;
+  If (Game_Number = 1) Then
+    Begin
+      Vsout('So you made it through the first game, eh?');
+      writeln(tty)
+    End;
+  Vsout('These notes explain some of what the introduction to the');
+  Vsout('program didn''t.  This doesn''t mean, however, that these');
+  Vsout('notes will give you the rules to the game.');
+  writeln(tty);
+  Vsout('First of all, you, as the user, must understand that you');
+  Vsout('are trying to accomplish two different goals.  First, you');
+  Vsout('are attempting to decipher how the game operates, and');
+  Vsout('second, you are trying to win the game.');
+  Ready := Again;
+  If (Ready <> Enough) Then
+    Begin
+      Notes;
+      Vsout('When the game is described as a minimum information');
+      Vsout('problem, this means that the user is given the minimum');
+      Vsout('information necessary to solve the problem.');
+      writeln(tty);
+      Vsout('Do you think you must receive more clues and hints before');
+      write(tty,'you are able to accept this intellectual challenge [Y/N]? ');
+      Repeat
+	Answer := Comand
+      Until (Answer In ['y','n','Y','N']);
+      If (Answer in ['y','Y']) Then
+	Hints
+      Else Victim
+    End
+End;
+
+Procedure Hints;
+Var
+  Ready : Reply;
+Begin
+  Notes;
+  Vnl;
+  Vsout('Chicken!'); Vnl;
+  Vnl;
+  Vsout('Chicken though you may be, you are much wiser than the'); Vnl;
+  Vsout('masochists who accepted the challenge.'); Vnl;
+  Vnl;
+  Vsout('All of the information that is given to you here is useful, but');
+  Vnl;
+  Vsout('you won''t necessarily be told how.'); Vnl;
+  Vnl;
+  Vsout('TIAR was created by Scott L. Richmond in 1974 using a special'); Vnl;
+  Vsout('deck of 150 cards, a pencil, a blank sheet of paper, and the'); Vnl;
+  Vsout('rules.  None of the rules have been changed in the computer'); Vnl;
+  Vsout('version.');
+  Ready := Again;
+  If (Ready <> Enough) Then
+    Begin
+      Notes;
+      Vsout('The pencil and blank sheet of paper have been replaced by the');
+      Vsout('computer''s automatic scoring system.  The cards have been');
+      Vsout('replaced by the computer''s memory, so that all you are actually');
+      Vsout('missing is the rules.  Ah, gee!');
+      writeln(tty);
+      Vsout('When you run the program you will see on the right side of your');
+      Vsout('screen the scoring pad.  There are four types of possible');
+      Vsout('scoring and two types of penalties.  Although they are not');
+      Vsout('defined for you, they are consistent and if you watch them');
+      Vsout('carefully, you should be able to figure out what causes them to');
+      Vsout('change and the increments of their various changes.');
+      Ready := Again
+    End;
+  If (Ready <> Enough) Then
+    Begin
+      Notes;
+      Vsout('Your score will equal the total scores (A, B, C, D) less the');
+      Vsout('total penalties (A, B).  The maximum of each score and penalty');
+      Vsout('is as follows:');
+      writeln(tty);
+      Vsout('    Score A:  545           Penalty A:  153');
+      Vsout('    Score B:  396           Penalty B:  198');
+      Vsout('    Score C: 2050');
+      Vsout('    Score D:   90           Score:     2562');
+      writeln(tty);
+      Vsout('So you see 400 points isn''t really too hard to obtain.  After');
+      Vsout('all, there''s a theoretical maximum of 2562.');
+      Ready := Again
+    End;
+  If (Ready <> Enough) Then
+    Begin
+      Notes;
+      Vsout('When you start to play the game, you will note that you have');
+      Vsout('five different actions (A, B, C, D, E) that you can operate.');
+      writeln(tty);
+      Vsout('Of these five actions, one affects no score; three affect at');
+      Vsout('least one score, perhaps two; and one affects at least one');
+      Vsout('score, perhaps even two or even three.');
+      writeln(tty);
+      Vsout('Of these five actions, one affects no penalty; three affect one');
+      Vsout('penalty; and one affects both penalties.');
+      writeln(tty);
+      Vsout('The scores and penalties will only be affected by the actions');
+      Vsout('if they are used correctly with valid parameters.');
+      Ready := Again
+    End;
+  If (Ready <> Enough) Then
+    Begin
+      Notes;
+      Vsout('What''s a parameter?  Glad you asked that.');
+      writeln(tty);
+      Vsout('A parameter is a pile identification title.');
+      writeln(tty);
+      Vsout('What''s a pile identification title?');
+      writeln(tty);
+      Vsout('A pile identification title is the name of one of the nine');
+      Vsout('piles (A, B, C, D, E, F, G, H, I).');
+      writeln(tty);
+      Vsout('By the way, one of the actions requires no parameters; two of');
+      Vsout('the actions require two parameters; one of the actions requires');
+      Vsout('two parameters; and one of the actions requires three parameters.');
+      Ready := Again
+    End;
+  If (Ready <> Enough) Then
+    Begin
+      Notes;
+      Vsout('If you give an action which requires more than one parameter an');
+      Vsout('initial parameter which is invalid, the game will reject the');
+      Vsout('action at that point without asking for additional parameters.');
+      writeln(tty);
+      Vsout('By now you should be thoroughly confused.  Don''t worry, this');
+      Vsout('is normal.  Later you will become both confused and');
+      Vsout('frustrated. This is also normal.');
+      writeln(tty);
+      Vsout('My suggestion is that you try running the game once or twice');
+      Vsout('and then review these clues and hints.  They will make more');
+      Vsout('sense at that point in time.');
+      Ready := Again
+    End;
+  If (Ready <> Enough) Then
+    Begin
+      Notes;
+      Vsout('And finally, each game is randomly set up.  This means that if');
+      Vsout('you play the game more than once, you will not repeat the same');
+      Vsout('exact game.  Rather, you will be playing a game with the same');
+      Vsout('rules.  In each different game, there is a hidden body of');
+      Vsout('knowledge which  is used in the game.  For each different game');
+      Vsout('this knowledge will be different, however, for any single game');
+      Vsout('this knowledge will be consistent.');
+      writeln(tty);
+      Vsout('I wish you good luck and lots of fun.');
+      Vsout('   -- Scott L. Richmond, Creator of TIAR');
+      writeln(tty);
+      Vsout('Addendum:  This version was implemented from the original TRS-80');
+      Vsout('Microsoft Basic version by John M. Relph.');
+      Ready := Again
+    End
+End;
