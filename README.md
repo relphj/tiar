@@ -8,3 +8,5 @@
 > Had enough? If you are observant, you will have seen by now that following Tiar, there is a little program entitled Tiar Notes. By logical deduction (where have I heard that before?) you will have assumed that Tiar Notes contains the keys to unlocking Tiar. You're an optimist. It's true that you will find a few hints there, but don't expect any great revelations.
 
 > Careful! When you list Tiar, there doesn't seem to be anything logical about the end of line 170. Well, Mr. Richmond somehow stuck one of his infamous extra-long lines in there. The of the line reads something like '....<>A(E2,F2,A(E2,F2,0)THEN@,'. By PEEKing around, the '@,' (which is not consistent since it sometimes lists as a graphic character or as a line feed) turned out to be '100'. Editing the line can be hazardous to the program.
+
+This version was implemented from the original TRS-80 Basic version by John M. Relph.
