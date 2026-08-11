@@ -58,3 +58,6 @@ dkms.conf
 # Emacs autosave
 \#*\#
 .#*
+
+# backup files
+*~
