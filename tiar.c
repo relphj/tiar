@@ -71,8 +71,8 @@ Idx : integer;
   While (Idx <= MAXLEN) Do
     {
       Our_Name[Idx] = SPACE;
-      Idx = Idx + 1
-	}
+      Idx = Idx + 1;
+    }
   First = TRUE;
   For Idx = 1 to Namlen Do
     If First
@@ -80,16 +80,16 @@ Idx : integer;
     Else If (Our_name[Idx]> 'Z') or (Our_name[Idx]< 'A')
     First = TRUE
     Else
-    Our_name[Idx] = Chr(Ord(Our_name[Idx]) + 40B)
-    }
+    Our_name[Idx] = Chr(Ord(Our_name[Idx]) + 40B);
+}
 
 int today();
 Var
 Tad : Cheater;
 {
   JSYS(227B;;Tad.Int);
-  Today = Tad.Lh
-    }
+  Today = Tad.Lh;
+}
 #endif
 
 void terminate()
@@ -156,11 +156,11 @@ Len : Integer;
   if Get_Line(Namlen,Our_Name,Len)
     {
       If (Len <= 0)
-	Get_Username(Our_Name)
-	}
+	Get_Username(Our_Name);
+    }
   Else
-    Get_Username(Our_Name)
-    }; /* Grab_Name */
+    Get_Username(Our_Name);
+} /* Grab_Name */
 #endif
 
 /* * * * * * * * */
@@ -831,8 +831,8 @@ Done : Boolean;
 	      Scores[Weekly,I].Total = -1000;
 	      Scores[Weekly,i].Name[1] = Chr(0);
 	    }
-	  Changed = TRUE
-	    }
+	  Changed = TRUE;
+	}
       If (Score > Scores[Phase,10].Total)
 	{
 	  I = 9;
@@ -843,15 +843,15 @@ Done : Boolean;
 	      Else If (Score > Scores[Phase,I].Total)
 	    {
 	      Scores[Phase,I+1] = Scores[Phase,I];
-	      I = I - 1
-		}
+	      I = I - 1;
+	    }
 	  Else
 	    Done = TRUE;
 	  I = I + 1;
 	  Scores[Phase,I].Total = Score;
 	  Scores[Phase,I].Name = Our_Name;
-	  Changed = TRUE
-	    }
+	  Changed = TRUE;
+	}
     }
 }
 
@@ -865,8 +865,8 @@ J : Integer;
     {
       Score_File^ = The_Scores;
       Put(Score_File);
-      Close(Score_File)
-	}
+      Close(Score_File);
+    }
 }
 
 void Disp_Scores(Scores : Score_Array);
@@ -882,8 +882,8 @@ I,J : Integer;
       Add_Line(FALSE);
       For I = 1 to 25 Do
 	Vbout(Scores[Weekly,J].Name[I]);
-      Vnout(Scores[Weekly,J].Total,5)
-	}
+      Vnout(Scores[Weekly,J].Total,5);
+    }
   Add_Line(FALSE);
   More;
   Clr_Lines;
@@ -895,8 +895,8 @@ I,J : Integer;
       Add_Line(FALSE);
       For I = 1 to 25 Do
 	Vbout(Scores[All_time,J].Name[I]);
-      Vnout(Scores[All_time,J].Total,5)
-	}
+      Vnout(Scores[All_time,J].Total,5);
+    }
 }
 
 void Savescore (Score : Integer; Quit : Boolean);
@@ -914,12 +914,12 @@ Cool : Boolean;
 	Else
 	More;
       For Phase = Weekly to All_Time do
-	Store_Score(Phase,Scores,Score,Cool)
-	}
+	Store_Score(Phase,Scores,Score,Cool);
+    }
   Disp_Scores(Scores.Scores);
   If Cool
-    Empty_Scores(Scores)
-    }
+    Empty_Scores(Scores);
+}
 #endif
 
 void show_score()
