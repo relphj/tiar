@@ -1,2 +1,2 @@
 # tiar
->> TIAR &lt;&lt; - a minimum information problem (game) by Scott L. Richmond
+&gt;&gt; TIAR &lt;&lt; - a minimum information problem (game) by Scott L. Richmond
